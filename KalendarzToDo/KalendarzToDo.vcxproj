@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Kalendarz.cpp" />
     <ClCompile Include="KalendarzToDo.cpp" />
     <ClCompile Include="Uzytkownik.cpp" />
     <ClCompile Include="Zadanie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Kalendarz.h" />
     <ClInclude Include="Uzytkownik.h" />
     <ClInclude Include="Zadanie.h" />
   </ItemGroup>
