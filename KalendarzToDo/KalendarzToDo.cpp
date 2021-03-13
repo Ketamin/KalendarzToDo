@@ -1,8 +1,11 @@
 ﻿#include <iostream>
+#include "Zadanie.h";
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+    Zadanie z;
+    z.dodajZadanie();
+    z.wypiszZadanie();
 }
