@@ -11,7 +11,7 @@ Zadanie::Zadanie(std::string nazwa_, std::string opis_, std::string data_, std::
 	autor = autor_;
 	wykonane = wykonane_;
 	id_zadania = ++id_zadania_licznik;
-	id_kalendarza = Kalendarz::id_kalendarza_licznik;
+	id_kalendarza = pokazLicznik();
 	// DOMYSLNIE ZADANIE JEST ZAWSZE DODAWANE DO OSTATNIO STWORZONEGO KALENDARZA!
 }
 
@@ -97,4 +97,7 @@ void Zadanie::wypiszZadanie() {
 	}
 	std::cout << "------------------------------------------------------------------\n";
 
+}
+int Zadanie::pokazLicznik() {
+	return Kalendarz::id_kalendarza_licznik;
 }

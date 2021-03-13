@@ -13,6 +13,7 @@ public:
 	//Zadanie();
 	~Zadanie();
 
+	int pokazLicznik();
 	void dodajZadanie();
 	void wypiszZadanie();
 
