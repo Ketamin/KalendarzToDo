@@ -1,5 +1,9 @@
 #include "Uzytkownik.h"
 
+Uzytkownik::Uzytkownik() {
+	// do zrobienia
+}
+
 Uzytkownik::Uzytkownik(std::string nazwa_, std::string haslo_) {
 	nazwa = nazwa_;
 	haslo = haslo_;
@@ -26,4 +30,9 @@ void Uzytkownik::logowanie(){
 
 void Uzytkownik::pokazNazwe() {
 	std::cout << nazwa;
+}
+
+void Uzytkownik::dodajKalendarze(Kalendarz& k) {
+	this->kalendarze.push_back(k);
+	std::cout << "Dodano kalendarz do uzytkownika!\n";
 }

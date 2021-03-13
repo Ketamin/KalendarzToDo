@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Zadanie.h"
-//#include "Kalendarz.h"
+#include "Kalendarz.h"
 
 Zadanie::Zadanie(std::string nazwa_, std::string opis_, std::string data_, std::string waznosc_, std::string autor_, bool wykonane_ = 0) {
 	nazwa = nazwa_;
@@ -10,6 +10,27 @@ Zadanie::Zadanie(std::string nazwa_, std::string opis_, std::string data_, std::
 	waznosc = waznosc_;
 	autor = autor_;
 	wykonane = wykonane_;
+	id_zadania = ++id_zadania_licznik;
+	id_kalendarza = Kalendarz::id_kalendarza_licznik;
+	// DOMYSLNIE ZADANIE JEST ZAWSZE DODAWANE DO OSTATNIO STWORZONEGO KALENDARZA!
+}
+
+Zadanie::~Zadanie() {
+	std::cout << "Usuwam wlasnie element\n";
+	--id_zadania_licznik;
+
+	Kalendarz* temp = new Kalendarz;
+
+	// DOKONCZYC SZUKANIE KALENDARZA GDZIE ID SIE ZGADZAJA!
+	//for (int i = 0; i < Kalendarz; i++) {
+	//	this->id_kalendarza
+	//}
+	
+	std::cout << "Usuwam zadanie o id = " << this->id_zadania << std::endl;
+	std::cout << "I id kalendarza = " << this->id_kalendarza << std::endl;
+
+	delete temp;
+
 }
 
 void Zadanie::dodajZadanie() {
@@ -53,16 +74,27 @@ void Zadanie::dodajZadanie() {
 	this->wykonane = false;
 	std::cin.ignore();
 
+	this->id_zadania = ++id_zadania_licznik;
+
 	//this->Kalendarz::dodajZadanieDoKalendarza(this);
 
 }
 void Zadanie::wypiszZadanie() {
-	std::cout << "Wypisuje zadanie \nnazwa = " << this->nazwa << "\nopis = " << this->opis << "\ndata = "
-		<< this->data << "\nwaznosc = " << this->waznosc << "\nautor = " << this->autor << "\nCzy zadanie zostalo wykonane = ";
+	std::cout << "------------------------------------------------------------------\n";
+	std::cout << "Wypisuje zadanie \n id_zadania = " 
+		<< this->id_zadania << "\nid_kalendarza = "
+		<< this->id_kalendarza << "\nnazwa = " 
+		<< this->nazwa << "\nopis = " 
+		<< this->opis << "\ndata = "
+		<< this->data << "\nwaznosc = " 
+		<< this->waznosc << "\nautor = " 
+		<< this->autor << "\nCzy zadanie zostalo wykonane = ";
 	if (this->wykonane) {
 		std::cout << "tak\n";
 	}
 	else {
 		std::cout << "to zadanie nie zostalo jescze wykonane\n";
 	}
+	std::cout << "------------------------------------------------------------------\n";
+
 }
