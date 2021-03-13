@@ -13,3 +13,13 @@ void Kalendarz::wypiszZadaniaZKalendarza() {
 		zadania[i].wypiszZadanie();
 	}
 }
+void Kalendarz::standardowy() {
+	nazwa = "Standardowy";
+	wlasciciel = "DO POPRAWY!";
+	std::cout << "Kalendarz standardowy zostal utworzony!" << std::endl;
+}
+void Kalendarz::wypisz() {
+	std::cout << "Nazwa = " << this->nazwa << std::endl;
+	std::cout << "Wlasciciel = " << this->wlasciciel << std::endl;
+	std::cout << "Id kalendarza = " << this->id_kalendarza << std::endl;
+}

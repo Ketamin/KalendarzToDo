@@ -16,7 +16,10 @@ public:
 	Kalendarz();
 	void dodajZadanieDoKalendarza(Zadanie& z);
 	friend void Zadanie::wypiszZadanie();
+	friend Zadanie::Zadanie();
 	friend Zadanie::~Zadanie();
 	friend int Zadanie::pokazLicznik();
 	void wypiszZadaniaZKalendarza();
+	void standardowy();
+	void wypisz();
 };

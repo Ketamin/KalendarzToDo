@@ -10,7 +10,7 @@ class Zadanie
 public:
 
 	Zadanie(std::string, std::string, std::string, std::string, std::string, bool);
-	//Zadanie();
+	Zadanie();
 	~Zadanie();
 
 	int pokazLicznik();
