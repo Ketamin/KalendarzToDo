@@ -9,7 +9,7 @@ class Zadanie
 	bool wykonane;
 public:
 
-	Zadanie(std::string, std::string, std::string, std::string, std::string, bool);
+	Zadanie(std::string, std::string, std::string, std::string, std::string,int,int,int,bool);
 	Zadanie();
 	~Zadanie();
 

@@ -27,10 +27,14 @@ int main()
     Standardowy->standardowy();
     Standardowy->wypisz();
     
-    Zadanie* temp = new Zadanie;
-    pomocniczy.push_back(*temp);
-    temp->zapiszDoPliku();
-    delete temp;
+    //Zadanie* temp = new Zadanie;
+    //pomocniczy.push_back(*temp);
+    //temp->zapiszDoPliku();
+    //delete temp;
+
+    Standardowy->wczytajZadaniaZPliku();
+
+    Standardowy->wypiszZadaniaZKalendarza();
 
     //delete Standardowy;
 

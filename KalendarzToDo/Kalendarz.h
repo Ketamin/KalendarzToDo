@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Zadanie.h"
 
 #pragma once
@@ -17,9 +18,11 @@ public:
 	void dodajZadanieDoKalendarza(Zadanie& z);
 	friend void Zadanie::wypiszZadanie();
 	friend Zadanie::Zadanie();
+	friend Zadanie::Zadanie(std::string, std::string, std::string, std::string, std::string, int, int, int, bool);
 	friend Zadanie::~Zadanie();
 	friend int Zadanie::pokazLicznik();
 	void wypiszZadaniaZKalendarza();
 	void standardowy();
 	void wypisz();
+	void wczytajZadaniaZPliku();
 };

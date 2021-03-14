@@ -54,16 +54,16 @@ Zadanie::Zadanie() {
 	_getch();
 }
 
-Zadanie::Zadanie(std::string nazwa_, std::string opis_, std::string data_, std::string waznosc_, std::string autor_, bool wykonane_ = 0) {
+Zadanie::Zadanie(std::string nazwa_, std::string opis_, std::string data_, std::string waznosc_, std::string autor_, int id_zadania_, int id_kalendarza_,int id_uzytkownika_,bool wykonane_ = 0) {
 	nazwa = nazwa_;
 	opis = opis_;
 	data = data_;
 	waznosc = waznosc_;
 	autor = autor_;
+	id_zadania = id_zadania_;
+	id_kalendarza = id_kalendarza_;
+	id_uzytkownika = id_uzytkownika_;
 	wykonane = wykonane_;
-	id_zadania = ++id_zadania_licznik;
-	id_kalendarza = pokazLicznik();
-	// DOMYSLNIE ZADANIE JEST ZAWSZE DODAWANE DO OSTATNIO STWORZONEGO KALENDARZA!
 }
 
 Zadanie::~Zadanie() {
@@ -145,7 +145,7 @@ void Zadanie::zapiszDoPliku() {
 	//using namespace std;
 	std::fstream plik;
 	//std::cout << "Uwaga zapisuje do pliku: " << this->nazwa << std::endl;
-	plik.open("zadania.txt", std::ios::out);
+	plik.open("zadania.txt", std::ios::out | std::ios::app);
 		plik << this-> nazwa << std::endl;
 		plik << this-> opis << std::endl;
 		plik << this-> data << std::endl;
