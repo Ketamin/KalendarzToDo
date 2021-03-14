@@ -4,7 +4,7 @@
 class Zadanie
 {
 	std::string nazwa, opis, data, waznosc, autor;
-	int id_zadania,id_kalendarza;
+	int id_zadania, id_kalendarza, id_uzytkownika;
 	static int id_zadania_licznik;
 	bool wykonane;
 public:
@@ -16,5 +16,5 @@ public:
 	int pokazLicznik();
 	void dodajZadanie();
 	void wypiszZadanie();
-
+	void zapiszDoPliku();
 };

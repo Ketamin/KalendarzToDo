@@ -4,7 +4,7 @@ Kalendarz::Kalendarz() {
 	id_kalendarza = ++id_kalendarza_licznik;
 	std::cout << "Konstuktor domyslny\n";
 }
-void Kalendarz::dodajZadanieDoKalendarza(Zadanie& z){
+void Kalendarz::dodajZadanieDoKalendarza(Zadanie& z) {
 	this->zadania.push_back(z);
 	std::cout << "Dodano zadanie do kalendarza!\n";
 }

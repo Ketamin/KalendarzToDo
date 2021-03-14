@@ -3,6 +3,7 @@
 #include "Zadanie.h"
 #include "Kalendarz.h"
 #include <conio.h> // do usuniecia
+#include <fstream>
 
 Zadanie::Zadanie() {
 
@@ -46,6 +47,7 @@ Zadanie::Zadanie() {
 	std::cin >> this->waznosc;
 	std::cout << "Wpisywanie autora zadania\n";
 	this->wykonane = false;
+	this->autor = "Domyslny";
 	std::cin.ignore();
 
 	std::cout << "Na sam koniec id_zadania_licznik = " << id_zadania_licznik << std::endl;
@@ -93,19 +95,19 @@ void Zadanie::dodajZadanie() {
 		this->opis = "Brak";
 	}
 	std::cout << "Prosze podac date na jaka planujesz zadanie (dd/mm/rrrr) : ";
+	std::cin >> sprawdzanieDaty;
+	while (sprawdzanieDaty.at(2) != '/' && sprawdzanieDaty.at(5) != '/') {
+		std::cout << "\nPodano zly format daty sproboj jescze raz lub napisz 'cancel' aby anulowac dodawanie zadania\n";
+		std::cout << "Prosze podac date na jaka planujesz zadanie (dd/mm/rrrr) : ";
 		std::cin >> sprawdzanieDaty;
-		while (sprawdzanieDaty.at(2) != '/' && sprawdzanieDaty.at(5) != '/') {
-			std::cout << "\nPodano zly format daty sproboj jescze raz lub napisz 'cancel' aby anulowac dodawanie zadania\n";
-			std::cout << "Prosze podac date na jaka planujesz zadanie (dd/mm/rrrr) : ";
-			std::cin >> sprawdzanieDaty;
-			if (sprawdzanieDaty == "cancel") {
-				std::cout << "Usuwam cale zadanie!";
-				/////////////
-				/////////////
-				/////////////
-			}
+		if (sprawdzanieDaty == "cancel") {
+			std::cout << "Usuwam cale zadanie!";
+			/////////////
+			/////////////
+			/////////////
 		}
-		this->data = sprawdzanieDaty;
+	}
+	this->data = sprawdzanieDaty;
 	std::cout << "Prosze podac waznosc zadania\n 1.Malo wazne\n 2.Wazne\n 3.Bardzo wazne\n";
 	std::cin >> this->waznosc;
 	std::cout << "Wpisywanie autora zadania\n";
@@ -119,13 +121,13 @@ void Zadanie::dodajZadanie() {
 }
 void Zadanie::wypiszZadanie() {
 	std::cout << "------------------------------------------------------------------\n";
-	std::cout << "Wypisuje zadanie \n id_zadania = " 
+	std::cout << "Wypisuje zadanie \n id_zadania = "
 		<< this->id_zadania << "\nid_kalendarza = "
-		<< this->id_kalendarza << "\nnazwa = " 
-		<< this->nazwa << "\nopis = " 
+		<< this->id_kalendarza << "\nnazwa = "
+		<< this->nazwa << "\nopis = "
 		<< this->opis << "\ndata = "
-		<< this->data << "\nwaznosc = " 
-		<< this->waznosc << "\nautor = " 
+		<< this->data << "\nwaznosc = "
+		<< this->waznosc << "\nautor = "
 		<< this->autor << "\nCzy zadanie zostalo wykonane = ";
 	if (this->wykonane) {
 		std::cout << "tak\n";
@@ -138,4 +140,20 @@ void Zadanie::wypiszZadanie() {
 }
 int Zadanie::pokazLicznik() {
 	return Kalendarz::id_kalendarza_licznik;
+}
+void Zadanie::zapiszDoPliku() {
+	//using namespace std;
+	std::fstream plik;
+	//std::cout << "Uwaga zapisuje do pliku: " << this->nazwa << std::endl;
+	plik.open("zadania.txt", std::ios::out);
+		plik << this-> nazwa << std::endl;
+		plik << this-> opis << std::endl;
+		plik << this-> data << std::endl;
+		plik << this-> waznosc << std::endl;
+		plik << this-> autor << std::endl;
+		plik << this-> id_zadania << std::endl;
+		plik << this-> id_kalendarza << std::endl;
+		plik << this-> id_uzytkownika << std::endl;
+		plik << this-> wykonane << std::endl;
+		plik.close();
 }

@@ -12,7 +12,7 @@ class Kalendarz
 	std::vector <Zadanie> zadania;
 
 public:
-	
+
 	Kalendarz();
 	void dodajZadanieDoKalendarza(Zadanie& z);
 	friend void Zadanie::wypiszZadanie();

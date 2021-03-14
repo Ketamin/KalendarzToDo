@@ -5,54 +5,36 @@
 #include "Kalendarz.h"
 #include "Uzytkownik.h"
 
-std::vector <Zadanie> listaZadan;
-std::vector <Kalendarz> listaKalendarzy;
-
 using namespace std;
 int Zadanie::id_zadania_licznik = 0;
 int Kalendarz::id_kalendarza_licznik = 0;
+int Uzytkownik::id_uzytkownika = 0;
+
+vector<Zadanie> pomocniczy;
 
 void wyswietlMenu();
 void podmenuZadania();
 void podmenuKalendarz();
 void podmenuUzytkownicy();
-void standardowyKalendarz();
+void dodawanieZadania();
 
 int choice;
 bool wyjscie = 0;
 
 int main()
 {
+    Kalendarz* Standardowy = new Kalendarz;
+    Standardowy->standardowy();
+    Standardowy->wypisz();
+    
+    Zadanie* temp = new Zadanie;
+    pomocniczy.push_back(*temp);
+    temp->zapiszDoPliku();
+    delete temp;
 
-    standardowyKalendarz();
-    _getch();
+    //delete Standardowy;
 
-    while (1) {
-        wyjscie = 0;
-        wyswietlMenu();
-        choice = _getch();
-        switch (choice) {
-        case '1' :
-            while (wyjscie == 0) {
-                podmenuZadania();
-            }
-            break;
-        case '2':
-            while (wyjscie == 0) {
-                podmenuKalendarz();
-            }
-        case '3' :
-            while (wyjscie == 0) {
-                podmenuUzytkownicy();
-            }
-        case '0' :
-            cout << "Koniec programu!" << endl;
-            break;
-        default:
-            cout << "Nie ma takiej opcji" << endl;
-            break;
-        }
-    }
+    return 0;
 }
 
 void wyswietlMenu() {
@@ -66,7 +48,6 @@ void wyswietlMenu() {
     cout << endl;
     cout << "---------------------------------------" << endl;
 }
-
 void podmenuZadania() {
     system("cls");
     cout << "----Wybrano podmenu Zadania----" << endl;
@@ -78,17 +59,14 @@ void podmenuZadania() {
     cout << endl;
     cout << "-------------------------------" << endl;
     choice = _getch();
-    
+
     switch (choice) {
     case '1':
     {
         cout << "Wybrano dodaj nowe zadanie" << endl;
-
-        Zadanie* temp = new Zadanie;
-        listaZadan.push_back(*temp);
-        delete temp;
+        
     }
-        break;
+    break;
     case '2':
         cout << "Wybrano usun zadanie" << endl;
         break;
@@ -96,12 +74,10 @@ void podmenuZadania() {
     {
         cout << "Wybrano pokaz zadania" << endl;
         cout << endl;
-        for (int i = 0; i < listaZadan.size(); i++) {
-            listaZadan[i].wypiszZadanie();
-        }
+        //Standardowy->wypiszZadaniaZKalendarza();
         _getch();
     }
-        break;
+    break;
     case '0':
         wyjscie = 1;
         break;
@@ -110,8 +86,7 @@ void podmenuZadania() {
         break;
     }
 }
-
-void podmenuUzytkownicy() {
+void podmenuKalendarz() {
     system("cls");
     cout << "----Wybrano podmenu Kalendarz----" << endl;
     cout << endl;
@@ -141,8 +116,7 @@ void podmenuUzytkownicy() {
         break;
     }
 }
-
-void podmenuKalendarz() {
+void podmenuUzytkownicy() {
     system("cls");
     cout << "----Wybrano podmenu Uzytkownicy----" << endl;
     cout << endl;
@@ -171,10 +145,4 @@ void podmenuKalendarz() {
         podmenuKalendarz();
         break;
     }
-}
-
-void standardowyKalendarz() {
-    Kalendarz k;
-    k.standardowy();
-    k.wypisz();
 }
